@@ -1,0 +1,86 @@
+.navBar {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  width: 100%;
+  position: relative;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+.RequestIcon:focus {
+  /* background-color: #075575; */
+  color: white;
+}
+.Rejectbutton {
+  margin-left: 15px;
+  border: solid 1px;
+  background: #ffe9e9;
+  color: red;
+  border-radius: 3px;
+}
+.ApproveButton {
+  margin-left: 15px;
+  border: solid 1px;
+  background: #d1f2d9;
+  color: #468a53;
+  border-radius: 3px;
+}
+
+.Rejectbutton:hover {
+  background-color: #ff0011;
+  color: aliceblue;
+}
+.ApproveButton:hover {
+  background-color: #00e12d;
+  color: aliceblue;
+}
+
+.admin-batch-window {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.admin-batch-window-content {
+  width: 93%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 auto;
+}
+.admin-batch-window-content-main {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 8px #f6f7f9;
+  border: 1px solid #e9eef7;
+  overflow-x: auto;
+  height: 100vh;
+}
+.chip {
+  width: fit-content;
+}
+.table-heading {
+  background-color: #e9eef7;
+}
+.admin-batch-window-content-breadcrumb{
+    margin-top: 15px;
+}
+.form-group has-search{
+    /* margin-top: 15px; */
+    display: flex;
+}
+.form-control{
+  display: flex;
+  justify-content: center;
+}

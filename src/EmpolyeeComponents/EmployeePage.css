@@ -1,0 +1,106 @@
+
+.DropDown-Div{
+    height: 10%;
+    width: 20rem;
+    /* flex-direction: row; */
+    margin-left: 90%;
+    margin-bottom: -25px;
+    
+}
+
+.navBar
+{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    width: 100%;
+    position: sticky(1000px)
+}
+.sideBar
+{
+    width:80px;
+    height:100%;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    background-color:white
+}
+.breadCrumbs
+{
+    margin-top:5px;
+    height:86vh;
+    background-color:#f8f8f8;
+    position:relative;
+    right:20px
+}
+.renderComponents{
+    height:90%;
+    background-color:white;
+    margin-top:-10px
+}
+.chips{
+    color:aliceblue;
+}
+.MainDiv
+{
+    height:86vh;
+    background-color:#f8f8f8;
+    /* positon:absolute; */
+}
+
+.MentorIcon1
+{
+    background-color: #086288;
+    padding: 8px 6px;
+    border-radius: 8px;
+    border: 0px;
+}
+.MentorIcon{
+    border: #ffffff;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+    background: #f8f8f8;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: rgb(160, 139, 139);
+}
+.tableheading{
+    background: #f0f2ff;
+}
+.avatar{
+    margin-right: 25px;
+}
+.navDropdown{
+    margin-right: 3%,
+    /* place-items: left;
+    font-size: "small"; */
+}
+.stauts
+{
+    border: #ffffff;
+}
+
+.someForm{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.textareamb-3{
+    width: 200%;
+}
+.ChipDesign{
+    border-radius: 10px;
+    /* border: 1px solid #e0e0e0; */
+    padding: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+   

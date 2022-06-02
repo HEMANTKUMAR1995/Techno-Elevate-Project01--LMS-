@@ -1,0 +1,11 @@
+.dashBoard{
+ display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+
+    .BigCard{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    
+    }
+}

@@ -1,0 +1,36 @@
+.backgroundimage{
+    background-image: url(./../Assests/BgImg.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100%;
+    position: absolute;
+    width: 100%;
+} 
+
+.containe{
+    display: flex;
+}
+
+.breakline {
+    color: white;
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hr {
+    color: white; 
+}
+.Button-Group{
+    margin-top: 80px;
+    display: flex   ;
+    justify-content: center;
+}
+.paraText{
+    color: white;
+
+}
+.copyRights{
+    color: white;
+    
+}
