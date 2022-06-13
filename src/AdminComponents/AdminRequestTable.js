@@ -17,50 +17,43 @@ function AdminRequestTable({ show, setShow }) {
     ];
     return tableheadercontent.map((key, idx) => <th key={idx}>{key}</th>);
   };
+
+ 
+
   let renderBody = () => {
     return (
       EMPOLYEES &&
-      EMPOLYEES.map(
-        ({
-          a,
-          No,
-          EmployeeID,
-          EmployeeName,
-          YOP,
-          Percentage,
-          Experience,
-          ContactNo,
-        }) => {
-          return (
-            <tr key={No}>
-              <td>
-                <input type="checkbox" />
-              </td>
-              <td>{No}</td>
-              <td>{EmployeeID}</td>
-              <td>{EmployeeName}</td>
-              <td>{YOP}</td>
-              <td>{Percentage}</td>
-              <td>{Experience}</td>
-              <td>{ContactNo}</td>
-              <td className="Action">
-                <button
-                  className="ApproveButton"
-                  onClick={() => {
-                    alert("You Clicked On Edit Icon.......!");
-                  }}
-                >
-                  Approve
-                </button>{" "}
-                &nbsp;{" "}
-                <button className="Rejectbutton" onClick={() => setShow(true)}>
-                  Reject
-                </button>
-              </td>
-            </tr>
-          );
-        }
-      )
+      EMPOLYEES.map((val, i) => {
+        return (
+          <tr key={i}>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>{val.No}</td>
+            <td>{val.EmployeeID}</td>
+            <td>{val.EmployeeName}</td>
+            <td>{val.YOP}</td>
+            <td>{val.Percentage}</td>
+            <td>{val.Experience}</td>
+            <td>{val.ContactNo}</td>
+            <td className="Action">
+              <button
+                className="ApproveButton"
+                style={{padding:"3px"}}
+                onClick={() => {
+                  alert("You Clicked On Edit Icon.......!");
+                }}
+              >
+               &nbsp; Approve &nbsp;
+              </button>
+              &nbsp;
+              <button className="Rejectbutton" style={{padding:"3px"}} onClick={() => setShow(true)}>
+                &nbsp; Reject &nbsp;
+              </button>
+            </td>
+          </tr>
+        );
+      })
     );
   };
   return (

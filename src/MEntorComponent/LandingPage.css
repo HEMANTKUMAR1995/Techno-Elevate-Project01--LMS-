@@ -1,0 +1,17 @@
+th,td {
+  padding: 10px;
+  font-size: small;
+}
+.divisionline {
+  /* display: block; */
+  /* wid; */
+}
+.EmployeeData-headings{
+    display: flex;
+    font-size: x-large;
+    /* justify-content: space-between;   */
+}
+.bold{
+    font-weight: bold;
+    font-size: 23px;
+}

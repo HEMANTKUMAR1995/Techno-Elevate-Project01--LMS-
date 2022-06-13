@@ -1,95 +1,82 @@
-import { Chip } from "@mui/material";
 import React from "react";
+import { Chip } from "@mui/material";
 import { Table } from "react-bootstrap";
-function AdminMentorTable({ }) {
+import {MdDelete} from 'react-icons/md'
+import { BsFillPencilFill } from "react-icons/bs";
+
+
+function AdminMentorTable() {
+  let renderhead = () => {
+    let tableheadercontent = [
+      "",
+      "Mentor Name",
+      "Email",
+      "EmployeeID",
+      "Skills",
+      "Action",
+    ];
+    return tableheadercontent.map((key, idx) => <th key={idx}>{key}</th>);
+  };
+  let MENTORS = [];
+  if (localStorage.length !== 0) {
+  MENTORS = JSON.parse(localStorage.getItem("mentorData"));
+  }
+  let renderBody = () => {
+    return (
+      MENTORS &&
+      MENTORS.map((val, i) => {
+        return (
+          <tr key={i}>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>{val.mentorname}</td>
+            <td>{val.employeeid}</td>
+            <td>{val.mentoremail}</td>
+            <td>
+              {val.mentorskills.map((val, i) => {
+                return (
+                  <Chip
+                    key={i}
+                    className="ChipDesign"
+                    label={val.label}
+                    style={{ backgroundColor: "#0c99d4" }}
+                  />
+                );
+              })}
+            </td>
+            <td>
+              <button
+                style={{ border: "none" }}
+                onClick={() => {
+                  alert("You Clicked On Edit Icon.......!");
+                }}
+              >
+                <BsFillPencilFill/>
+              </button>{" "}
+              &nbsp;{" "}
+              <button
+                style={{ border: "none" }}
+                onClick={() => {
+                  alert("You Clicked On Delete Icon");
+                }}
+              >
+                <MdDelete/>
+              </button>
+            </td>
+          </tr>
+        );
+      })
+    );
+  };
+
   return (
-    <div>
-      <Table>
-        <thead className="tableheading">
-          <tr>
-            <th>
-              <input type="checkbox" />
-            </th>
-            <th>No</th>
-            <th>Mentor Name</th>
-            <th>Employee ID</th>
-            <th>Email ID</th>
-            <th>skills</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>01</td>
-            <td>Satyan Saurav</td>
-            <td>#0000001</td>
-            <td>Sat01@technoelevate.com</td>
-            <td>
-             
-              <Chip className="ChipDesign" label="React" style={{backgroundColor:"#0c99d4"}}/>
-              <Chip className="ChipDesign" label="Java" style={{backgroundColor:"#0c99d4"}}/>
-              <Chip className="ChipDesign" label="Sql" style={{backgroundColor:"#0c99d4"}}/>
-            </td>
-            <td>
-              <button
-                style={{ border: "none" }}
-                onClick={() => {
-                  alert("You Clicked On Edit Icon.......!");
-                }}
-              >
-                <i className="fa-solid fa-pen"></i>
-              </button>{" "}
-              &nbsp;{" "}
-              <button
-                style={{ border: "none" }}
-                onClick={() => {
-                  alert("You Clicked On Delete Icon");
-                }}
-              >
-                <i className="fa-solid fa-trash-can"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>02</td>
-            <td>Shantala</td>
-            <td>#0000002</td>
-            <td>Santa02@technoelevate.com</td>
-            <td>
-            
-              <Chip className="ChipDesign" label="React" style={{backgroundColor:"#0c99d4"}}/>
-              <Chip className="ChipDesign" label="Java" style={{backgroundColor:"#0c99d4"}}/>
-              <Chip className="ChipDesign" label="Sql" style={{backgroundColor:"#0c99d4"}}/>
-            </td>
-            <td>
-              <button
-                style={{ border: "none" }}
-                onClick={() => {
-                  alert("You Clicked On Edit Icon.......!");
-                }}
-              >
-                <i className="fa-solid fa-pen"></i>
-              </button>{" "}
-              &nbsp;{" "}
-              <button
-                style={{ border: "none" }}
-                onClick={() => {
-                  alert("You Clicked On Delete Icon");
-                }}
-              >
-                <i className="fa-solid fa-trash-can"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-    </div>
+    <Table>
+      <thead className="tableheading">
+        <tr>{renderhead()}</tr>
+      </thead>
+      <tbody>{renderBody()}</tbody>
+    </Table>
   );
 }
 

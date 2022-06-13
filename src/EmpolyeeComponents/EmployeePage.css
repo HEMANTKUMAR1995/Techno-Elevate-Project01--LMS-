@@ -1,4 +1,13 @@
-
+.BsExclamationTriangle{
+    color:  #f0ad4e; 
+    font-size: 2em;
+    /* margin-right: 0.5em; */
+}
+.BsExclamationTriangleFill{
+    color:  #f0ad4e; 
+    font-size: 2em;
+    /* margin-right: 0.5em; */
+}
 .DropDown-Div{
     height: 10%;
     width: 20rem;
@@ -103,4 +112,23 @@
     margin-right: 5px;
     margin-bottom: 5px;
 }
-   
+.AdminMentorbatchPerformance{
+    border: solid 2px #e4e6ea;
+    border-radius: 10px;
+}
+.EmployeeDegree{
+    border: solid 2px #e4e6ea;
+    border-radius: 10px;
+}
+.Experiecnce{
+    border: solid 2px #e4e6ea;
+    border-radius: 10px;
+}
+.yearOfPassing{
+    border: solid 2px #e4e6ea;
+    border-radius: 10px;
+}
+.Gender{
+    border: solid 2px #e4e6ea;
+    border-radius: 10px;
+}

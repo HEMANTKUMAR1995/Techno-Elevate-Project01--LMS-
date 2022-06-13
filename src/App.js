@@ -13,8 +13,12 @@ import AdminBatch from "./AdminComponents/AdminBatch";
 import EmployeeMainPage from "./EmpolyeeComponents/EmployeeMainPage";
 import Login from "./LoginComponent/Login";
 import React from "react";
+import LandingPage from "./MEntorComponent/LandingPage";
+import EmployeeDashboard from "./MEntorComponent/EmployeeDashboard";
+// import BatchDa from "./Data/Batchda.js";/
 
 function App() {
+  // localStorage.setItem("batchData", JSON.stringify([]));
   return (
     <div className="App">
       <Routes>
@@ -29,9 +33,12 @@ function App() {
         <Route path="/Experience" element={<Experience />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/EmployeeMainPage" element={<EmployeeMainPage />} />
+        <Route path="/EmployeePage" element={ <LandingPage/>} />
       </Routes>
-    </div>
 
+      {/* <EmployeeDashboard/> */}
+    </div>
+    // <BatchDa/>
   );
 }
 

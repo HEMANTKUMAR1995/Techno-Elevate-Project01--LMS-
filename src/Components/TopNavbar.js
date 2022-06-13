@@ -21,10 +21,9 @@ function TopNavbar() {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Text className="justify-content-center">
-            <div className="form-group has-search">
-              {/* <span className="fa fa-search form-control-feedback"></span> */}
+            <div className=" fa fa-solid fa-magnifying-glass">
               <input
-                type="text"
+                type="search"
                 className="form-control"
                 placeholder="Search"
                 style={{ width: "40vw" }}
@@ -36,7 +35,6 @@ function TopNavbar() {
               variant="outline-primary"
               style={{ padding: "5px 25px" }}
               onClick={LogoutFunction}
-              
             >
               Logout
             </Button>

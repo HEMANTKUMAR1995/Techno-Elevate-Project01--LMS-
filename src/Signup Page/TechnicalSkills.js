@@ -154,6 +154,7 @@ let ValidateFunction = () => {
             style={{ width: "540px", height: "64px", fontSize: "20px" }}
             aria-label="Default select example"
             name="YEarOfExperience"
+            type="number"
             value={technicalData.YEarOfExperience}
             onChange={getTechnicalDetails}
           >
@@ -161,8 +162,10 @@ let ValidateFunction = () => {
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
-                <option value="3">4</option>
-                <option value="3">5</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
           </Form.Select>
         </Form.Group>
 

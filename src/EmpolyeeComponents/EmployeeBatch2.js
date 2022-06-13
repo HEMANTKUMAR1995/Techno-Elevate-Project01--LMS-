@@ -1,15 +1,38 @@
 import React, { useState } from "react";
-import {
-  Navbar,
-  Table,
-  Dropdown,
-  OverlayTrigger,
-  Tooltip,
-} from "react-bootstrap";
+import { Navbar, Table, Dropdown, OverlayTrigger } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import AddMockModal from "../Components/AddMockModal";
 import GiveRatingModal from "../Components/GiveRatingModal";
+import { Tooltip } from "antd";
+import { BsExclamationTriangleFill } from "react-icons/bs";
+import { AiOutlineFileExcel } from "react-icons/ai";
+
+const text = (
+  <span className="emptext">
+    <tr>
+      <td style={{color:"black"}}>Mock 1</td>
+      <td style={{color:"#8cda98"}}>Excellent</td>
+    </tr>
+    <tr>
+      <td style={{color:"black"}}>Mock 2</td>
+      <td style={{color:"#a5c7f4"}}>Good</td>
+    </tr>
+    <tr>
+      <td style={{color:"black"}}>Mock 3</td>
+      <td style={{color:"#d58a0a"}}>Average</td>
+    </tr>
+    <tr>
+      <td style={{color:"black"}}>Mock 4</td>
+      <td style={{color:"#dfbb0a"}}>Above Average</td>
+    </tr>
+    <tr>
+      <td style={{color:"black"}}>Mock 5</td>
+      <td style={{color:"#f27a96"}}>Below Average</td>
+    </tr>
+  </span>
+);
+
 
 function EmployeeBatch2() {
   const [show, setShow] = useState(false);
@@ -21,23 +44,31 @@ function EmployeeBatch2() {
     panel: "",
     dateAndTime: "",
   });
+  const [giveMockRatings, setGiveMockRati] = useState({
+    mocktype: "",
+    mockTakenBy: "",
+    technology: "",
+    praticalknowledge: "",
+    theoriticalknowledege: "",
+    overallfeedback: "",
+    detailedfeedback: "",
+  });
+
+  // let tooltipShow = () => {};
+  const color="#ffffff";
   return (
     <div>
       <GiveRatingModal
         shows={shows}
         setShows={setShows}
-        addMockData={addMockData}
+        giveMockRatings={giveMockRatings}
       />
-      <AddMockModal 
-      show={show} 
-      setShow={setShow}
-      addMockData={addMockData} 
-      />
+      <AddMockModal show={show} setShow={setShow} addMockData={addMockData} />
 
       <Navbar style={{ height: "60px" }}>
         <Container fluid>
           <Navbar.Brand href="#home" style={{ color: "orange" }}>
-            Employee List{" "}
+            Employee List
             <span style={{ color: "black" }}>&#40;Batch ID&#41;</span>
           </Navbar.Brand>
           <Navbar.Toggle />
@@ -59,7 +90,7 @@ function EmployeeBatch2() {
           </Navbar.Collapse>
           <Dropdown>
             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-              Download
+            <AiOutlineFileExcel/>Download
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item href="#/action-1">Employee Data</Dropdown.Item>
@@ -102,47 +133,16 @@ function EmployeeBatch2() {
             <td>HEmant</td>
             <td>3/3</td>
             <td>
-              {/* <OverlayTrigger
-                placement="right-start"
-                overlay={
-                  <Tooltip id="tooltip-5" variant="light">
-                    <Table variant="light">
-                      <tbody variant="light">
-                        <tr>
-                          <td>Mock 1</td>
-                          <td style={{ color: "green" }}>Excellent</td>
-                        </tr>
-                        <tr>
-                          <td>Mock 2</td>
-                          <td style={{ color: "yellow" }}>Good</td>
-                        </tr>
-                        <tr>
-                          <td>Mock 3</td>
-                          <td style={{ color: "Brown" }}>Above Average</td>
-                        </tr>
-                        <tr>
-                          <td>Mock 4</td>
-                          <td style={{ color: "red" }}>Average</td>
-                        </tr>
-                      </tbody>
-                    </Table>
-                  </Tooltip>
-                }
-              >
-                {({ ref, ...triggerHandler }) => (
-                  <Button
-                    variant="light"
-                    // className="d-inline-flex align-items-center"
-                  >
-                    <i
-                      ref={ref}
-                      {...triggerHandler}
-                      class="fa-solid fa-triangle-exclamation"
-                      style={{ fontSize: "35px", color: "yellow" }}
-                    ></i>
-                  </Button>
-                )}
-              </OverlayTrigger> */}
+              <Tooltip placement="bottom" title={text} color={color}>
+                <button
+                  className="btntool"
+                  style={{ border: "none", background: "#ffffff" }}
+                >
+                  <BsExclamationTriangleFill
+                    className="BsExclamationTriangleFill"
+                  />
+                </button>
+              </Tooltip>
             </td>
             <td>13/23</td>
             <td>

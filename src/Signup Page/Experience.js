@@ -23,27 +23,26 @@ function Experience() {
   let getExperienceData = (e) => {
     setExperincedata({ ...experincedata, [e.target.name]: e.target.value });
   };
-console.log(experincedata);
+  console.log(experincedata);
 
-
-let DatasentToLocalStorage = () => {
-  localStorage.setItem("Experience Details", JSON.stringify(experincedata));
-};
-let ValidateFunction = () => {
-  if (
-    experincedata.CompanyName &&
-    experincedata.YearOfExperience &&
-    experincedata.DateOfJoining &&
-    experincedata.DateOfRelieving &&
-    experincedata.Designation &&
-    experincedata.Location
-  ) {
-    DatasentToLocalStorage();
-    navigateNext();
-  } else {
-    alert("Please Fill all the feilds");
-  }
-};
+  let DatasentToLocalStorage = () => {
+    localStorage.setItem("Experience Details", JSON.stringify(experincedata));
+  };
+  let ValidateFunction = () => {
+    if (
+      experincedata.CompanyName &&
+      experincedata.YearOfExperience &&
+      experincedata.DateOfJoining &&
+      experincedata.DateOfRelieving &&
+      experincedata.Designation &&
+      experincedata.Location
+    ) {
+      DatasentToLocalStorage();
+      navigateNext();
+    } else {
+      alert("Please Fill all the feilds");
+    }
+  };
   let navigate = useNavigate();
   let navigateNext = () => {
     navigate("/Contact");
@@ -55,7 +54,7 @@ let ValidateFunction = () => {
     <div>
       <div className="container fluid">
         <navbar>
-          <Nav variant="scrollable"  defaultActiveKey="/Primary">
+          <Nav variant="scrollable" defaultActiveKey="/Primary">
             <Nav.Item>
               <Nav.Link href="/">Primary Info</Nav.Link>
             </Nav.Item>
@@ -84,16 +83,18 @@ let ValidateFunction = () => {
                 }}
               >
                 Experience
-              </Nav.Link> <b>
-              <hr
-                style={{ width:"40%",
-                  height: "5px",
-                  background: "#f29a27",
-                  paddingTop:"3px",
-                  marginTop:"-5px"
-                }}
-              ></hr>
-            </b>
+              </Nav.Link>{" "}
+              <b>
+                <hr
+                  style={{
+                    width: "40%",
+                    height: "5px",
+                    background: "#f29a27",
+                    paddingTop: "3px",
+                    marginTop: "-5px",
+                  }}
+                ></hr>
+              </b>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link href="/Contact">Contact</Nav.Link>
@@ -140,7 +141,8 @@ let ValidateFunction = () => {
               </Form.Label>
               <Form.Control
                 style={{ width: "540px", height: "64px", fontSize: "20px" }}
-                type="text"
+                aria-label="Default select example"
+                type="number"
                 name="YearOfExperience"
                 value={experincedata.YearOfExperience}
                 onChange={getExperienceData}
@@ -162,7 +164,7 @@ let ValidateFunction = () => {
               </Form.Label>
               <Form.Control
                 style={{ width: "540px", height: "64px", fontSize: "20px" }}
-                type="text"
+                type="date"
                 name="DateOfJoining"
                 value={experincedata.DateOfJoining}
                 onChange={getExperienceData}
@@ -184,7 +186,7 @@ let ValidateFunction = () => {
               </Form.Label>
               <Form.Control
                 style={{ width: "540px", height: "64px", fontSize: "20px" }}
-                type="text"
+                type="date"
                 name="DateOfRelieving"
                 value={experincedata.DateOfRelieving}
                 onChange={getExperienceData}
@@ -212,11 +214,19 @@ let ValidateFunction = () => {
                 onChange={getExperienceData}
               >
                 <option></option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="3">4</option>
-                <option value="3">5</option>
+                <option value="Front-End Developer">Front-End Developer</option>
+                <option value="Back-End Developer">Back-End Developer</option>
+                <option value="Full-Skack Developer">
+                  Full-Skack Developer
+                </option>
+                <option value=".Net Developer">.Net Developer</option>
+                <option value="Manual test Engineer">
+                  Manual test Engineer
+                </option>
+                <option value="Automation test Engineer">
+                  Automation test Engineer
+                </option>
+                <option value="Software Engineer">Software Engineer</option>
               </Form.Select>
             </Form.Group>
             <Form.Group
@@ -261,7 +271,11 @@ let ValidateFunction = () => {
                   navbarScroll
                 ></Nav>
                 <Form className="d-flex">
-                  <Button variant="primary" size="lg" onClick={ValidateFunction}>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    onClick={ValidateFunction}
+                  >
                     Next
                   </Button>
                 </Form>

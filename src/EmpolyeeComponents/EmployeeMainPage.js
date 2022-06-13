@@ -37,7 +37,6 @@ function EmployeeMainPage() {
           >
             <div className="form-group has-search">
               <span className="fa fa-search form-control-feedback"></span>
-              {/* <input type="text" class="form-control" placeholder="Search" style={{ width: '500px' }} /> */}
               <InputComponent
                 placeholder="Search"
                 style={{ width: "100%", border: "none" }}
@@ -59,7 +58,8 @@ function EmployeeMainPage() {
               title="Chotu"
               menuVariant="light"
             >
-              <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.1">Pr
+              ofile</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Change Password
               </NavDropdown.Item>
@@ -114,24 +114,4 @@ function EmployeeMainPage() {
 
 export default EmployeeMainPage;
 
-// const [isImage, setisImage] = useState(false);
-// const [isImage1, setisImage1] = useState(false);
-// let changeImage = () => {
-//   if (isImage === false) {
-//     setisImage(true);
-//     setisImage1(false);
-//   } else {
-//     setisImage1(false);
-//   }
-//   setPage("DashBoard");
-// };
 
-// let changeImage1 = () => {
-//   if (isImage1 === false) {
-//     setisImage1(true);
-//     setisImage(false);
-//   } else {
-//     setisImage(false);
-//   }
-//   setPage("EmployeeList");
-// };

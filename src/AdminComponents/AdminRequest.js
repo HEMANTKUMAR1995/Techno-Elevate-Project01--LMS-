@@ -4,7 +4,7 @@ import { Button, Container, Form, Modal, Navbar, Table } from "react-bootstrap";
 import ReasonForRejectionModal from "../Components/ReasonForRejectionModal";
 import AdminRequestTable from "./AdminRequestTable";
 
-function AdminRequest() { 
+function AdminRequest() {
   const [show, setShow] = useState(false);
   return (
     <div>

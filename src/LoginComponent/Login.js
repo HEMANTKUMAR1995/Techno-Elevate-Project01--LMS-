@@ -9,17 +9,13 @@ function Login() {
     employeeId: "",
     password: "",
   });
-  /*User login credential list
-  //Admin: id-HEMANT01, password-Admin@123
-  //Mentor: id-HEMANT02, password-Mentor@123
-  //Employee: id-HEMANT03, password-Employee@123*/
 
-  let Adminid = "HEMANT01";
-  let Adminpassword = "Admin@123";
-  let Mentorid = "HEMANT02";
-  let Mentorpassword = "Mentor@123";
-  let Employeeid = "HEMANT03";
-  let EmployeePassword = "Employee@123";
+  let Adminid = "DEEPTITYSS001";
+  let Adminpassword = "DEEPTI";
+  let Mentorid = "SATYAMTYSS01";
+  let Mentorpassword = "SATYAMTYSS01";
+  let Employeeid = "HEMANT01";
+  let EmployeePassword = "HEMANT";
 
   let UpdateEmployeeData = (event) => {
     seEmployeeData({
@@ -27,13 +23,8 @@ function Login() {
       [event.target.name]: event.target.value,
     });
   };
-  // let EmployeeidFromLocalStorage = () => {
-  //   let savedEmployeeid = JSON.parse(localStorage.getItem("PrimaryData"));
-  //   let { EmpolyeeId } = savedEmployeeid;
-  //   // console.log(EmpolyeeId);
-  //   return EmpolyeeId;
-  // };
   let navigate = useNavigate();
+
   let Register = () => {
     navigate("/Primary");
   };
@@ -85,6 +76,7 @@ function Login() {
             backgroundColor: "#000000A2",
           }}
         >
+         
           <Card.Img
             style={{ width: "60%", height: "100%", marginLeft: "-11px" }}
             //  className="col-xl-4 col-lg-4 col-md-8 col-sm-8"
@@ -135,7 +127,6 @@ function Login() {
                   <Form.Control
                     type="text"
                     name="employeeId"
-                    // placeholder="employeeID"
                     value={EmployeeData.employeeId}
                     onChange={UpdateEmployeeData}
                   />
@@ -191,7 +182,7 @@ function Login() {
               <br />
               <div style={{ display: "-ms-grid" }}>
                 <p style={{ marginTop: "1%", marginBottom: "-2%" }}>
-                  <a className="changePass" href="myntraa.com">
+                  <a className="changePass" href="#">
                     Change Password
                   </a>
                 </p>

@@ -1,7 +1,6 @@
 import React from "react";
 import "./../AdminComponents/AdminBatch.css";
 import { Button } from "react-bootstrap";
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function SideNavbar({ setPage }) {
@@ -17,12 +16,10 @@ function SideNavbar({ setPage }) {
         }}
       >
         <br />
-        {/* <Link to="Admin/batch"> */}
         <Button
           onClick={() => setPage("home")}
           variant="light"
           className="BatchIcon"
-          // style={{ border:"blue" }}
         >
           <img
             style={{ width: "25px" }}
@@ -30,14 +27,11 @@ function SideNavbar({ setPage }) {
             alt=""
           />
         </Button>
-        {/* </Link> */}
         <br /> <hr style={{ width: "68px" }} />
-        {/* <Link to="/Admin/Mentor"> */}
         <Button
           onClick={() => setPage("adminmentor")}
           variant="light"
           className="MentorIcon"
-          // style={{ backgroundColor: "none" }}
         >
           <img
             style={{ width: "25px" }}
@@ -45,15 +39,12 @@ function SideNavbar({ setPage }) {
             alt=""
           />
         </Button>
-        {/* </Link> */}
         <br />
         <hr style={{ width: "68px" }} />
-        {/* <Link to="/Admin/Request"> */}
         <Button
           onClick={() => setPage("adminrequest")}
           variant="light"
           className="RequestIcon"
-          // style={{ backgroundColor: "none" }}
         >
           <img
             style={{ width: "25px" }}
@@ -61,7 +52,6 @@ function SideNavbar({ setPage }) {
             alt=""
           />
         </Button>
-        {/* </Link> */}
       </div>
     </div>
   );

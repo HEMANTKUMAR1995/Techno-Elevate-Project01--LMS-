@@ -131,9 +131,9 @@ function EducationDetails() {
                 onChange={getEducationData}
               >
                 <option></option>
-                <option value="1">Masters(M..tech)</option>
-                <option value="2">Bachelor(B.E)</option>
-                <option value="3">Post Graduate</option>
+                <option value="Masters">Masters</option>
+                <option value="Bachelor">Bachelor</option>
+                <option value="Under-Graduate">Under Graduate</option>
               </Form.Select>
             </Form.Group>
 
@@ -177,7 +177,7 @@ function EducationDetails() {
               </Form.Label>
               <Form.Control
                 style={{ width: "540px", height: "64px", fontSize: "20px" }}
-                type="text"
+                type="percentage"
                 name="PerCenTage"
                 value={educationdetails.PerCenTage}
                 onChange={getEducationData}
@@ -276,11 +276,12 @@ function EducationDetails() {
                 value={educationdetails.State}
                 onChange={getEducationData}
               >
-                <option value="1">Karnataka</option>
-                <option value="2">Maharastara</option>
-                <option value="3">Odisha</option>
-                <option value="4">WestBengal</option>
-                <option value="5">Chattisgadh</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Maharastara">Maharastara</option>
+                <option value="Odisha">Odisha</option>
+                <option value="WestBengal">WestBengal</option>
+                <option value="Chattisgadh">Chattisgadh</option>
+                <option value="Other...">Other...</option>
               </Form.Select>
             </Form.Group>
           </Row>

@@ -1,185 +1,99 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Modal, Navbar, Table } from "react-bootstrap";
 import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
-import { fontSize } from "@mui/system";
-// import './AdminBatch.css'
+import AddNewBatchModal from "../Components/AddNewBatchModal";
+import ChangeStatusModal from "../Components/ChangeStatusModal";
+import { BsFillPencilFill } from "react-icons/bs";
+import { MdDelete } from "react-icons/md";
+import EditBatchModal from "../Components/EditBatchModal";
 
 function AdminTable() {
-  const [show, setShow] = useState(false);
-  const [status, setStatus] = useState(false);
+  const [show, setShow] = useState(false); /* for Add new mentor modal */
+  const [status, setStatus] = useState(false); /*for change status modal */
   const [batchModalData, setBatchModalData] = useState({
     BatchName: "",
     Mentorname: "",
     Technologies: "",
-    StartDate: new Date(),
-    EndDate: new Date(),
+    StartDate: new Date().toLocaleDateString(),
+    EndDate: new Date().toLocaleDateString(),
   });
-  const handleDelete = () => {
-    alert("You Clicked On Remove Button........!");
+  const [editBatch, setEditBatch] = useState(false); /*for edit batch modal */
+  const [rowNo, setrowNo] = useState(); /*for edit batch modal */
+
+  let handleCloseEdit = () => {
+    /*for closing edit batch modal */
+    setEditBatch(false);
   };
-  let functionOnEditClick = () => {
-    handleShow();
-    // alert("You Clicked On Edit Icon.......!");
+  const [data, setdata] = useState([]); /*for storing data from local storage */
+
+  let functionOnEditClick = (i) => {
+    /*for opening edit batch modal */ /*for opening change status modal */
+    setEditBatch(true);
+    setBatchModalData({ ...data[i] });
+    setrowNo(i);
   };
+
+  let saveEditData = () => {
+    let editDataCopy = [...data];
+    editDataCopy.splice(rowNo, 1, batchModalData);
+    setdata(editDataCopy);
+    localStorage.setItem("batchData", JSON.stringify(editDataCopy));
+    handleCloseEdit();
+  };
+  const initialBatchData = [
+    {
+      BatchName: "Uplift2022march",
+      Mentorname: "Sachin",
+      Technologies: "Java,Spring,Hibernate",
+      StartDate: "20/03/2020",
+      EndDate: "20/03/2020",
+    },
+  ];
+  useEffect(() => {
+    if (localStorage.getItem("batchData")) {
+      setdata(JSON.parse(localStorage.getItem("batchData")));
+    } else {
+      setdata(initialBatchData);
+    }
+  }, []);
+
   let functionOnDeleteClick = () => {
     alert("You Clicked On Delete Icon");
   };
-  let handleClose = () => setShow(false);
-  let handleShow = () => setShow(true);
   let HandelChangeInModal = (e) => {
     setBatchModalData({ ...batchModalData, [e.target.name]: e.target.value });
   };
-  let handleClose1 = () => {
-    setStatus(false);
-    alert("Sucessfully Updated");
+  let setBatchDataToLS = () => {
+    let dataCopy = [...data];
+    dataCopy.push(batchModalData);
+    setdata(dataCopy);
+    localStorage.setItem("batchData", JSON.stringify(dataCopy));
+    setShow(false);
   };
-  let handleShow2 = () => setStatus(true);
-  // let changeStatus = (e) => {
-  //   setBatchModalData({ ...batchModalData, [e.target.name]: e.target.value });
-  // };
 
-  console.log(batchModalData);
+  // console.log(a);
+  let dataFromLocalStorage = [];
+  dataFromLocalStorage = JSON.parse(localStorage.getItem("batchData"));
   return (
     <div>
-      <>
-        <Modal show={status} onHide={handleClose1}>
-          <Modal.Header closeButton>
-            <Modal.Title>Change Status</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group>
-                <Form.Label>Batch Name</Form.Label>
-                <Form.Select
-                  aria-label="Default select example"
-                  // name="Mentorname"
-                  // value={batchModalData.Mentorname}
-                  // onChange={HandelChangeInModal}
-                >
-                  <option>.....</option>
-                  <option value="java">Java</option>
-                  <option value="React">React</option>
-                  <option value="C#">C#</option>
-                  <option value="More">........</option>
-                </Form.Select>
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Batch ID</Form.Label>
-                <Form.Select
-                  aria-label="Default select example"
-                  // name="Mentorname"
-                  // value={batchModalData.Mentorname}
-                  // onChange={HandelChangeInModal}
-                >
-                  <option>.....</option>
-                  <option value="01">TYSS01</option>
-                  <option value="02">TYSS02</option>
-                  <option value="03">TYSS03</option>
-                  <option value="04">........</option>
-                </Form.Select>
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose1}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose1}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-
-      <>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add New batch </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group
-                className="mb-2"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Batch Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  autoFocus
-                  name="BatchName"
-                  value={batchModalData.BatchName}
-                  onChange={HandelChangeInModal}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Mentor Name</Form.Label>
-                <Form.Select
-                  aria-label="Default select example"
-                  name="Mentorname"
-                  value={batchModalData.Mentorname}
-                  onChange={HandelChangeInModal}
-                >
-                  <option>.....</option>
-                  <option value="1">Styam</option>
-                  <option value="2">Shantala</option>
-                  <option value="3">Ajay</option>
-                  <option value="3">........</option>
-                </Form.Select>
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Technologies</Form.Label>
-                <Form.Select
-                  aria-label="Default select example"
-                  name="Technologies"
-                  value={batchModalData.Technologies}
-                  onChange={HandelChangeInModal}
-                >
-                  <option>.....</option>
-                  <option value="1">SQL Data-Base</option>
-                  <option value="2">React</option>
-                  <option value="3">java Script</option>
-                  <option value="3">HTML/CSS</option>
-                </Form.Select>
-              </Form.Group>
-              <Form.Group
-                className="mb-2"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Start Date</Form.Label>
-                <Form.Control
-                  type="Date"
-                  autoFocus
-                  name="StartDate"
-                  value={batchModalData.StartDate}
-                  onChange={HandelChangeInModal}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-2"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>End Date</Form.Label>
-                <Form.Control
-                  type="Date"
-                  autoFocus
-                  name="EndDate"
-                  value={batchModalData.EndDate}
-                  onChange={HandelChangeInModal}
-                />
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Create
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
+      <ChangeStatusModal status={status} setStatus={setStatus} />
+      <EditBatchModal
+        editBatch={editBatch}
+        batchModalData={batchModalData}
+        setBatchModalData={setBatchModalData}
+        HandelChangeInModal={HandelChangeInModal}
+        handleCloseEdit={handleCloseEdit}
+        saveEditData={saveEditData}
+        functionOnEditClick={functionOnEditClick}
+      />
+      <AddNewBatchModal
+        show={show}
+        setShow={setShow}
+        batchModalData={batchModalData}
+        HandelChangeInModal={HandelChangeInModal}
+        setBatchDataToLS={setBatchDataToLS}
+        setBatchModalData={setBatchModalData}
+      />
       <div>
         <Navbar style={{ height: "60px" }}>
           <Container fluid>
@@ -195,7 +109,7 @@ function AdminTable() {
                 >
                   <span className="fa fa-search form-control-feedback"></span>
                   <input
-                    type="text"
+                    type="search"
                     className="form-control"
                     placeholder="Search"
                     style={{ width: "400px" }}
@@ -204,7 +118,7 @@ function AdminTable() {
               </Navbar.Text>
             </Navbar.Collapse>
             <Button
-              onClick={handleShow}
+              onClick={() => setShow(true)}
               variant="warning"
               style={{ padding: "5px 10px", color: "#f4f5f8" }}
             >
@@ -230,69 +144,71 @@ function AdminTable() {
             </tr>
           </thead>
           <tbody>
-            <tr style={{ background: "#ffffff" }}>
-              <td>
-                <input type="checkbox" />
-              </td>
-              <td>01</td>
-              <td>#TySS02022De</td>
-              <td>Uplift2022</td>
-              <td>Deepti</td>
-              <td>
-                {/* <Stack direction="row" spacing={0.5}>
-                  {chips.map((val) => {
-                    return (
-                      <Chip
-                        key={val}
-                        className="chip"
-                        label={val}
-                        variant="outlined"
-                        onDelete={handleDelete}
-                        style={{ background: "#0c99d4" }}
-                      />
-                    );
-                  })}
-                </Stack> */}
-                <Chip className="ChipDesign" label="React" style={{backgroundColor:"#0c99d4"}}/>
-              <Chip className="ChipDesign" label="Java" style={{backgroundColor:"#0c99d4"}}/>
-              <Chip className="ChipDesign" label="Sql" style={{backgroundColor:"#0c99d4"}}/>
-              </td>
-              <td>28 Mar 2022</td>
-              <td>..............</td>
-              <td>
-                <select
-                  name="status"
-                  id="cars"
-                  onChange={handleShow2}
-                  style={{ border: "0px", fontSize: "20px" }}
-                >
-                  <option value="inProgress" style={{ color: "#e5cb41" }}>
-                    InProgress
-                  </option>
-                  <option value="pending" style={{ color: "#dff7e5" }}>
-                    Pending
-                  </option>
-                  <option value="completed" style={{ color: "#bde0f8" }}>
-                    Completed
-                  </option>
-                </select>
-              </td>
-              <td>
-                <button
-                  style={{ border: "none" }}
-                  onClick={functionOnEditClick}
-                >
-                  <i className="fa-solid fa-pen"></i>
-                </button>
-                &nbsp;
-                <button
-                  style={{ border: "none" }}
-                  onClick={functionOnDeleteClick}
-                >
-                  <i className="fa-solid fa-trash-can"></i>
-                </button>
-              </td>
-            </tr>
+            {dataFromLocalStorage.map((val, idx) => {
+              return (
+                <>
+                  <tr key={idx} style={{ background: "#ffffff" }}>
+                    <td>
+                      <input type="checkbox" />
+                    </td>
+                    <td>{idx + 1}</td>
+                    <td>{"TyssApril" + idx + "22"}</td>
+                    <td>{val.BatchName}</td>
+                    <td>{val.Mentorname}</td>
+                    {/* <td>{val.Technologies}</td> */}
+                    <td>
+                      {val.Technologies.map((val, idx) => {
+                        return (
+                          <Chip
+                            key={idx}
+                            label={val.label}
+                            style={{ backgroundColor: "#0c99d4" }}
+                            className="ChipDesign"
+                          />
+                        );
+                      })}
+                    </td>
+                    <td>{val.StartDate}</td>
+                    <td>{val.EndDate}</td>
+                    <td>
+                      <select
+                        name="status"
+                        id="cars"
+                        onChange={() => setStatus(true)}
+                        style={{ border: "0px", fontSize: "20px" }}
+                      >
+                        <option value="inProgress" style={{ color: "#e5cb41" }}>
+                          InProgress
+                        </option>
+                        <option value="pending" style={{ color: "#dff7e5" }}>
+                          Pending
+                        </option>
+                        <option value="completed" style={{ color: "#bde0f8" }}>
+                          Completed
+                        </option>
+                      </select>
+                    </td>
+                    <td>
+                      <button
+                        style={{ border: "none" }}
+                        onClick={() => {
+                          functionOnEditClick(idx);
+                        }}
+                      >
+                        <BsFillPencilFill />
+                      </button>
+                      &nbsp;
+                      <button
+                        style={{ border: "none" }}
+                        onClick={functionOnDeleteClick}
+                      >
+                        <MdDelete />
+                      </button>
+                    </td>
+                  </tr>
+                </>
+              );
+            })}
           </tbody>
         </Table>
       </div>

@@ -66,7 +66,7 @@ function Primary() {
               <hr
                 style={{ width:"40%",
                   height: "5px",
-                  background: "#f29a27",
+                  backgroundColor: "#f26513",
                   paddingTop:"3px",
                   marginTop:"-5px"
                 }}
@@ -261,9 +261,13 @@ function Primary() {
               onChange={getPrimaryData}
             >
               <option></option>
-              <option value="1">Admin</option>
-              <option value="2">Mentor</option>
-              <option value="3">Empolyee/Trainee</option>
+              <option value="Front-End Developer">Front-End Developer</option>
+              <option value="Back-End Developer">Back-End Developer</option>
+              <option value="Full-Skack Developer">Full-Skack Developer</option>
+              <option value=".Net Developer">.Net Developer</option>
+              <option value="Manual test Engineer">Manual test Engineer</option>
+              <option value="Automation test Engineer">Automation test Engineer</option>
+              <option value="Software Engineer">Software Engineer</option>
             </Form.Select>
           </Form.Group>
 
@@ -289,9 +293,9 @@ function Primary() {
               onChange={getPrimaryData}
             >
               <option></option>
-              <option value="1">Male</option>
-              <option value="2">Female</option>
-              <option value="3">TransGender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="TransGender">TransGender</option>
             </Form.Select>
           </Form.Group>
         </Row>
@@ -318,9 +322,9 @@ function Primary() {
               onChange={getPrimaryData}
             >
               <option></option>
-              <option value="1">Indian</option>
-              <option value="2">NRI</option>
-              <option value="3">....!</option>
+              <option value="Indian">Indian</option>
+              <option value="NRI">NRI</option>
+              <option value="3">-NA-</option>
             </Form.Select>
           </Form.Group>
           <Form.Group
@@ -345,9 +349,10 @@ function Primary() {
               onChange={getPrimaryData}
             >
               <option></option>
-              <option value="1">Applied</option>
-              <option value="2">Appointed</option>
-              <option value="3">Declined</option>
+              <option value="JOB SEEKER">JOB SEEKER</option>
+              <option value="Working">Working</option>
+              <option value="Freeelancer">Freeelancer</option>
+              <option value="Fresher">Fresher</option>
             </Form.Select>
           </Form.Group>
         </Row>
@@ -357,7 +362,9 @@ function Primary() {
             expand="lg"
           >
             {/* <Container fluid> */}
-            <Button variant="secondary" size="lg">
+            <Button variant="secondary" size="lg" onClick={()=>{
+              navigate("/")
+            }}>
               Previous
             </Button>
             <Nav

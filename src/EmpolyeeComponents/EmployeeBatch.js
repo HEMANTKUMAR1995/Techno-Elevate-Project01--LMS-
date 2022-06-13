@@ -1,13 +1,42 @@
 import React, { useState } from "react";
 import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
+// import Stack from "@mui/material/Stack";
 import { Navbar, Table } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import AttendenceModal from "../Components/AttendenceModal";
-import { AiFillAlert } from "react-icons/ai";
+import { BsExclamationTriangle } from "react-icons/bs";
+import { Tooltip } from "antd";
+
+const text = (
+  <span className="emptext">
+    <tr>
+      <td style={{color:"black"}}><b>Initial Strength</b></td>
+      <td style={{ color: "#5593ad" }}><b>100</b></td>
+    </tr>
+    <tr>
+      <td style={{color:"black"}}><b>Dropout</b></td>
+      <td style={{ color: "#ee5074" }}><b>10</b></td>
+    </tr>
+    <tr>
+      <td style={{color:"black"}}><b>Terminated</b></td>
+      <td style={{ color: "#ee5074" }}><b>10</b></td>
+    </tr>
+    <tr>
+      <td style={{color:"black"}}><b>Absconding</b></td>
+      <td style={{ color: "#ee5074" }}><b>10</b></td>
+    </tr>
+    <tr>
+      <td style={{color:"black"}}><b>Present Strength</b></td>
+      <td style={{ color: "#5593ad" }}><b>70</b></td>
+    </tr>
+  </span>
+);
 
 function EmployeeBatch({ setPage }) {
-  const [show,setShow] = useState(false);
+  // console.log(a);
+  let dataFromLocalStorage = [];
+  dataFromLocalStorage = JSON.parse(localStorage.getItem("batchData"));
+  const [show, setShow] = useState(false);
 
   let date = new Date();
   let month = date.getMonth();
@@ -32,7 +61,7 @@ function EmployeeBatch({ setPage }) {
   const handleDelete = () => {
     console.info("You clicked the delete icon.");
   };
-
+  const color="#ffffff";
 
   return (
     <div>
@@ -61,57 +90,81 @@ function EmployeeBatch({ setPage }) {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Table>
-        <thead className="tableheading">
-          <tr key={0}>
+      <Table className="table-heading">
+        <thead>
+          <tr>
             <th>
               <input type="checkbox" />
             </th>
             <th>No</th>
             <th>Batch Id</th>
             <th>Batch Name</th>
+            <th>Mentor Name</th>
             <th>Technologies</th>
             <th>Start Date</th>
             <th>End Date</th>
             <th>Status</th>
-            <th>Batch Strength</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr key={1}>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>01</td>
-            <td>#15234654</td>
-            <td>abcd</td>
-            <td >
-              <Chip className="ChipDesign" label="React" style={{backgroundColor:"#0c99d4"}}/>
-              <Chip className="ChipDesign" label="Java" style={{backgroundColor:"#0c99d4"}}/>
-              <Chip className="ChipDesign" label="Sql" style={{backgroundColor:"#0c99d4"}}/>
-            </td>
-            <td>12 Mar 2022</td>
-            <td>04 Dec 2022</td>
-            <td>
-              <select className="stauts" name="status" id="cars">
-                <option value="inProgress">InProgress</option>
-                <option value="pending">Pending</option>
-                <option value="completed">Completed</option>
-              </select>
-            </td>
-            <td>
-            <AiFillAlert/>
-              <span style={{ cursor: "pointer" }} onClick={() => setShow(true)}>
-                &nbsp; Attendance
-              </span>
-              <span
-                style={{ cursor: "pointer" }}
-                onClick={() => setPage("EmployeeList2")}
-              >
-                &nbsp; &gt;
-              </span>
-            </td>
-          </tr>
+          {dataFromLocalStorage.map((val, idx) => {
+            return (
+              <>
+                <tr key={idx} style={{ background: "#ffffff" }}>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>{idx + 1}</td>
+                  <td>{"TyssApril" + idx + "22"}</td>
+                  <td>{val.BatchName}</td>
+                  <td>{val.Mentorname}</td>
+                  {/* <td>{val.Technologies}</td> */}
+                  <td>
+                    {val.Technologies.map((val, idx) => {
+                      return (
+                        <Chip
+                          key={idx}
+                          label={val.label}
+                          style={{ backgroundColor: "#0c99d4" }}
+                          className="ChipDesign"
+                        />
+                      );
+                    })}
+                  </td>
+                  <td>{val.StartDate}</td>
+                  <td>{val.EndDate}</td>
+                  <td>
+                    <select className="stauts" name="status" id="cars">
+                      <option value="inProgress">InProgress</option>
+                      <option value="pending">Pending</option>
+                      <option value="completed">Completed</option>
+                    </select>
+                  </td>
+                  <td>
+                  <Tooltip placement="bottom" title={text} 
+                  color={color}> 
+                <button className='btntool' style={{border:"none" ,background:"#ffffff"}} >
+                    <BsExclamationTriangle className="BsExclamationTriangle" />
+                    </button>
+              </Tooltip>
+                    <span
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setShow(true)}
+                    >
+                      &nbsp; Attendance
+                    </span>
+                    <span
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setPage("EmployeeList2")}
+                    >
+                      &nbsp; &gt;
+                    </span>
+                  </td>
+                </tr>
+              </>
+            );
+          })}
         </tbody>
       </Table>
     </div>

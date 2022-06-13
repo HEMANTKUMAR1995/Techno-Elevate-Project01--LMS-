@@ -171,9 +171,10 @@ let ValidateFunction = () => {
                 onChange={getBankData}
               >
                 <option></option>
-                <option value="1">Savings</option>
-                <option value="2">Current</option>
-                <option value="3">Salary</option>
+                <option value="Savings">Savings</option>
+                <option value="Current">Current</option>
+                <option value="Salary">Salary</option>
+                <option value="Minor">Minor</option>
               </Form.Select>
             </Form.Group>
             <Form.Group
@@ -221,11 +222,11 @@ let ValidateFunction = () => {
                 value={bankdata.Branch}
                 onChange={getBankData}
               >
-                <option value="1">Karnataka</option>
-                <option value="2">Maharastara</option>
-                <option value="3">Odisha</option>
-                <option value="4">WestBengal</option>
-                <option value="5">Chattisgadh</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Maharastara">Maharastara</option>
+                <option value="Odisha">Odisha</option>
+                <option value="WestBengal">WestBengal</option>
+                <option value="Chattisgadh">Chattisgadh</option>
               </Form.Select>
             </Form.Group>
 
@@ -250,11 +251,11 @@ let ValidateFunction = () => {
                 valuue={bankdata.State}
                 onChange={getBankData}
               >
-                <option value="1">Karnataka</option>
-                <option value="2">Maharastara</option>
-                <option value="3">Odisha</option>
-                <option value="4">WestBengal</option>
-                <option value="5">Chattisgadh</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Maharastara">Maharastara</option>
+                <option value="Odisha">Odisha</option>
+                <option value="WestBengal">WestBengal</option>
+                <option value="Chattisgadh">Chattisgadh</option>
               </Form.Select>
             </Form.Group>
           </Row>

@@ -27,7 +27,7 @@ function SecondaryInfo() {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(secondaryinfo);
+  // console.log(secondaryinfo);
 
   let DatasentToLocalStorage = () => {
     localStorage.setItem("SecondaryData", JSON.stringify(secondaryinfo));
@@ -267,9 +267,9 @@ function SecondaryInfo() {
               onChange={getSecondaryData}
             >
               <option></option>
-              <option value="1">Single</option>
-              <option value="2">Married</option>
-              <option value="3">Divorced</option>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Divorced">Divorced</option>
             </Form.Select>
           </Form.Group>
         </Row>

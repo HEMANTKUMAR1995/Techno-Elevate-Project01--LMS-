@@ -129,9 +129,9 @@ function AddressDetails() {
                 onChange={getAddressDetails}
               >
                 <option></option>
-                <option value="1">Permanent</option>
-                <option value="2">Temperory</option>
-                <option value="3">office</option>
+                <option value="Permanent">Permanent</option>
+                <option value="Temperory">Temperory</option>
+                <option value="office">office</option>
               </Form.Select>
             </Form.Group>
 
@@ -227,11 +227,13 @@ function AddressDetails() {
                 value={addressDetails.City}
                 onChange={getAddressDetails}
               >
-                <option value="1">Bangalore</option>
-                <option value="2">Mumbai</option>
-                <option value="3">Bhubaneswar</option>
-                <option value="4">Kolkata</option>
-                <option value="5">Bihar</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bhubaneswar">Bhubaneswar</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Other">Other....</option>
               </Form.Select>
             </Form.Group>
 
@@ -256,11 +258,11 @@ function AddressDetails() {
                 value={addressDetails.State}
                 onChange={getAddressDetails}
               >
-                <option value="1">Karnataka</option>
-                <option value="2">Maharastara</option>
-                <option value="3">Odisha</option>
-                <option value="4">WestBengal</option>
-                <option value="5">Chattisgadh</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Maharastara">Maharastara</option>
+                <option value="Odisha">Odisha</option>
+                <option value="WestBengal">WestBengal</option>
+                <option value="Chattisgadh">Chattisgadh</option>
               </Form.Select>
             </Form.Group>
           </Row>
